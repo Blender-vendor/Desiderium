@@ -32,7 +32,7 @@ public class FlashLight : MonoBehaviour
             rayLength = hit.distance; 
             for (float i = rayLength; i == 0; i--)
             {
-                Instantiate(visionCube, rayLength.point);
+                Instantiate(visionCube);
             }
         }
 
