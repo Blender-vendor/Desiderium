@@ -8,19 +8,29 @@ public class FlashLight : MonoBehaviour
 {
     public KeyCode recharge;
     public bool lightOn = false;
-    //private bool failSafe = false;
 
     public float Battery = 100f;
+    static float rayLength;
 
     public GameObject Light;
     public GameObject soundVolume;
+    public GameObject flashlight;
+    public GameObject Obstacle;
 
-    
+    RaycastHit hit;
 
 
     // Update is called once per frame
     void Update()
     {
+        Ray ray = new Ray(transform.position, flashlight.transform.forward);
+        Debug.DrawRay(flashlight.transform.position, flashlight.transform.forward * rayLength, Color.red);
+        
+        if (Physics.Raycast(ray, out hit))
+        {
+            Debug.Log(hit.distance);
+            rayLength = hit.distance;
+        }
         //detects if battery is zero and turns the torch off. stops the battery from going under 0%
         if (Battery <= 0)
         {
@@ -64,5 +74,6 @@ public class FlashLight : MonoBehaviour
         {
             Battery = 100;
         }
+        
     }
 }
