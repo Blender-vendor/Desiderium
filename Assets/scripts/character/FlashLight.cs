@@ -16,7 +16,7 @@ public class FlashLight : MonoBehaviour
     public GameObject soundVolume;
     public GameObject flashlight;
     public GameObject Obstacle;
-
+    public GameObject visionCube;
     RaycastHit hit;
 
 
@@ -29,8 +29,14 @@ public class FlashLight : MonoBehaviour
         if (Physics.Raycast(ray, out hit))
         {
             Debug.Log(hit.distance);
-            rayLength = hit.distance;
+            rayLength = hit.distance; 
+            for (float i = rayLength; i == 0; i--)
+            {
+                Instantiate (visionCube, rayLength.point)
+            }
         }
+
+       
         //detects if battery is zero and turns the torch off. stops the battery from going under 0%
         if (Battery <= 0)
         {
@@ -59,7 +65,7 @@ public class FlashLight : MonoBehaviour
         {
             Battery -= 5 * Time.deltaTime;
         }
-        //recharges battery and de/actives the sound detection volume
+        //recharges battery and de/activates the sound detection volume
         if (Input.GetKey(recharge))
         {
             Battery += 10 * Time.deltaTime;
@@ -74,6 +80,7 @@ public class FlashLight : MonoBehaviour
         {
             Battery = 100;
         }
+
         
     }
 }
