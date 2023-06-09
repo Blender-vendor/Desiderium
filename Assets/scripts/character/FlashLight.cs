@@ -12,10 +12,11 @@ public class FlashLight : MonoBehaviour
     public float Battery = 100f;
     static float rayLength;
 
+    public LayerMask cubeCreatorLayer;
+
     public GameObject Light;
     public GameObject soundVolume;
     public GameObject flashlight;
-    public GameObject Obstacle;
     public GameObject visionCube;
     RaycastHit hit;
 
@@ -23,17 +24,22 @@ public class FlashLight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Ray ray = new Ray(transform.position, flashlight.transform.forward);
+        Ray ray = new Ray(flashlight.transform.position, flashlight.transform.forward);
         Debug.DrawRay(flashlight.transform.position, flashlight.transform.forward * rayLength, Color.red);
-        
-        if (Physics.Raycast(ray, out hit))
+        Physics.Raycast(ray, out hit, cubeCreatorLayer, LayerMask.GetMask("Walls"));
+
+        if (Physics.Raycast(ray, out hit, cubeCreatorLayer, LayerMask.GetMask("Walls","ground")))
         {
             Debug.Log(hit.distance);
-            rayLength = hit.distance; 
-            for (float i = rayLength; i == 0; i--)
+            rayLength = hit.distance;
+            Instantiate(visionCube, hit.point, Quaternion.identity);
+            
+            if (visionCube == null)
             {
-                Instantiate(visionCube);
+                return;
             }
+               
+            
         }
 
        
