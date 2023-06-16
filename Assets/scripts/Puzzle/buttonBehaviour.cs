@@ -1,64 +1,53 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class buttonBehaviour : MonoBehaviour
+public class ButtonBehaviour : MonoBehaviour
 {
-    public GameObject puzzleGroup;
-    public GameObject interact;
-    private bool buttonPressed = false;
 
-    public KeyCode interactKey;
+    public bool playerInZone;
+    public bool lightOn;
 
-    private bool inReach;
+    public PuzzleBehaviour Puzzle;
 
-    public List<GameObject> lights;
-    
+    [SerializeField] private GameObject[] Lights;
 
 
-    // Start is called before the first frame update
+
     void Start()
     {
-        inReach = false;
+        playerInZone = false;
     }
 
-    private void OnTriggerEnter (Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Reach")
+        if (other.gameObject.tag == "Player")
         {
-            inReach = true;
-            Debug.Log("enter");
+            playerInZone=true;
+            Debug.Log("Enter");
         }
     }
-    private void OnTriggerExit (Collider other)
+    private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Reach")
+        if (other.gameObject.tag == "Player")
         {
-            inReach = false;
-            Debug.Log("exit");
+            playerInZone = false;
+            Debug.Log("Exit");
         }
     }
-
     // Update is called once per frame
     void Update()
     {
-        if (inReach && Input.GetKeyDown(interactKey) && buttonPressed == false)
+        if (playerInZone && Input.GetKeyDown(KeyCode.E))
         {
-            buttonPressed = true;
-            Debug.Log(buttonPressed);
-        }
-        else if (inReach && Input.GetKeyDown(interactKey) && buttonPressed == true)
-        {
-            buttonPressed = false;
-            Debug.Log(buttonPressed);
-        }
-
-        foreach(GameObject light in lights)
-        {
-            return;
+            Debug.Log("works fine");
+            
+            foreach (GameObject Light in Lights)
+            {
+                Light.SetActive(!Light.activeSelf);
+            }
+            Puzzle.CountLights();
         }
     }
-    
 }
