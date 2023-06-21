@@ -2,19 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class AiLocomotion : MonoBehaviour
 {
    public NavMeshAgent ai;
     public List<Transform> destinations;
-    public float walkSpeed, chaseSpeed, minIdleTime, maxIdletime, idleTime;
+    public float walkSpeed, chaseSpeed, minIdleTime, maxIdletime, idleTime, catchDistance, chaseTime, minChaseTime, maxChaseTime, jumpscareTime;
     public bool walking, chasing;
+    
+    public Animator aiAnim;
 
     public Transform playerTransform;
     Transform currentDest;
     Vector3 dest;
     int randomNum, randomNum2;
     public int destinationAmount;
+    public Vector3 rayCastOffset;
+    public string deathScene;
+
+
     private void Start()
     {
         walking = true;
@@ -23,14 +30,52 @@ public class AiLocomotion : MonoBehaviour
     }
     private void Update()
     {
+        Vector3 direction = (playerTransform.position - transform.position).normalized;
+        RaycastHit hit;
+
+        if (Physics.Raycast(transform.position + rayCastOffset, direction, out hit))
+        {
+            if (hit.collider.gameObject.tag == "player")
+            {
+                walking = false;
+                StopCoroutine("stayIdle");
+                StopCoroutine("chaseRoutine");
+                StartCoroutine("chaseRoutine");
+                chasing = true;
+            }
+        }
+
+        if (chasing)
+        {
+            dest = playerTransform.position;
+            ai.destination = dest;
+            ai.speed = chaseSpeed;
+            aiAnim.ResetTrigger("walk");
+            aiAnim.ResetTrigger("idle");
+            aiAnim.SetTrigger("sprint");
+            if (ai.remainingDistance <= catchDistance)
+            {
+                playerTransform.gameObject.SetActive(false);
+                aiAnim.SetTrigger("jumpscare");
+                StartCoroutine(deathRoutine());
+                chasing = false;
+            }
+        }
+
         if (walking)
         {
             dest = currentDest.position;
             ai.destination = dest;
             ai.speed = walkSpeed;
+            aiAnim.ResetTrigger("sprint");
+            aiAnim.ResetTrigger("idle");
+            aiAnim.SetTrigger("walk");
 
-            if(ai.remainingDistance <= ai.stoppingDistance)
+            if (ai.remainingDistance <= ai.stoppingDistance)
             {
+                aiAnim.ResetTrigger("sprint");
+                aiAnim.ResetTrigger("walk");
+                aiAnim.SetTrigger("idle");
                 randomNum2 = Random.Range (0,2);
                 if (randomNum2 == 0)
                 {
@@ -53,5 +98,19 @@ public class AiLocomotion : MonoBehaviour
         walking = true;
         randomNum = Random.Range(0, destinationAmount);
         currentDest = destinations[randomNum];
+    }
+    IEnumerator chaseRoutine()
+    {
+        chaseTime = Random.Range (minChaseTime, maxChaseTime);
+        yield return new WaitForSeconds (chaseTime);
+        walking = true;
+        chasing = false;
+        randomNum = Random.Range(0, destinationAmount);
+        currentDest = destinations[randomNum];
+    }
+    IEnumerator deathRoutine()
+    {
+        yield return new WaitForSeconds(jumpscareTime);
+        SceneManager.LoadScene(deathScene);
     }
 }
