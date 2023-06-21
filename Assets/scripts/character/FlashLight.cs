@@ -62,7 +62,7 @@ public class FlashLight : MonoBehaviour
         //drains battery
         if (lightOn == true)
         {
-            Battery -= 5 * Time.deltaTime;
+            Battery -= 3 * Time.deltaTime;
         }
         //recharges battery and de/activates the sound detection volume
         if (Input.GetKey(recharge))
@@ -84,6 +84,10 @@ public class FlashLight : MonoBehaviour
         {
             if (Physics.Raycast(ray, out hit, cubeCreatorLayer, LayerMask.GetMask("Walls", "ground")))
             {
+                if (visionCube == null)
+                {
+                    return;
+                }
                 //grabs distance, start and end positions as well as length
                 //Debug.Log(hit.distance);
                 rayLength = hit.distance;
@@ -97,10 +101,10 @@ public class FlashLight : MonoBehaviour
                     Instantiate(visionCube, Start + hitDirection * d, Quaternion.identity);
                 }
 
-                if (visionCube == null)
-                {
-                    return;
-                }
+               //if (visionCube == null)
+               // {
+                   // return;
+               // }
 
 
             }

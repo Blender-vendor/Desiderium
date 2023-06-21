@@ -36,7 +36,7 @@ public class ButtonBehaviour : MonoBehaviour
             Debug.Log("Exit");
         }
     }
-    // Update is called once per frame
+    // checks to see if the player is in the collider and then when 'E' is pressed turns on all the lights in the lights Array
     void Update()
     {
         if (playerInZone && Input.GetKeyDown(KeyCode.E))
