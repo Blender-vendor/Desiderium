@@ -6,11 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class AiLocomotion : MonoBehaviour
 {
-   public NavMeshAgent ai;
+    public NavMeshAgent ai;
     public List<Transform> destinations;
-    public float walkSpeed, chaseSpeed, minIdleTime, maxIdletime, idleTime, catchDistance, chaseTime, minChaseTime, maxChaseTime, jumpscareTime;
+    public float walkSpeed, chaseSpeed, minIdleTime, maxIdletime, idleTime, catchDistance, chaseTime, minChaseTime, maxChaseTime, jumpscareTime, sightDistance;
     public bool walking, chasing;
-    
+
     public Animator aiAnim;
 
     public Transform playerTransform;
@@ -19,7 +19,9 @@ public class AiLocomotion : MonoBehaviour
     int randomNum, randomNum2;
     public int destinationAmount;
     public Vector3 rayCastOffset;
+    public Vector3 rayCastTargetOffset;
     public string deathScene;
+    public Ray ray;
 
 
     private void Start()
@@ -28,14 +30,17 @@ public class AiLocomotion : MonoBehaviour
         randomNum = Random.Range (0,destinationAmount);
         currentDest = destinations[randomNum];
     }
-    private void Update()
+    void Update()
     {
-        Vector3 direction = (playerTransform.position - transform.position).normalized;
+        Vector3 direction = ((playerTransform.position + rayCastTargetOffset) - transform.position).normalized;
+       
         RaycastHit hit;
-
-        if (Physics.Raycast(transform.position + rayCastOffset, direction, out hit))
+        
+        
+        if (Physics.Raycast(transform.position + rayCastOffset , direction * sightDistance, out hit))
         {
-            if (hit.collider.gameObject.tag == "player")
+            Debug.DrawRay(transform.position + rayCastOffset, direction * sightDistance);
+            if (hit.collider.gameObject.tag == "Player")
             {
                 walking = false;
                 StopCoroutine("stayIdle");
@@ -43,9 +48,11 @@ public class AiLocomotion : MonoBehaviour
                 StartCoroutine("chaseRoutine");
                 chasing = true;
             }
-        }
+        } 
+        
+           
 
-        if (chasing)
+        if (chasing == true)
         {
             dest = playerTransform.position;
             ai.destination = dest;
@@ -56,6 +63,9 @@ public class AiLocomotion : MonoBehaviour
             if (ai.remainingDistance <= catchDistance)
             {
                 playerTransform.gameObject.SetActive(false);
+                aiAnim.ResetTrigger("walk");
+                aiAnim.ResetTrigger("idle");
+                aiAnim.ResetTrigger("sprint");
                 aiAnim.SetTrigger("jumpscare");
                 StartCoroutine(deathRoutine());
                 chasing = false;
@@ -71,11 +81,8 @@ public class AiLocomotion : MonoBehaviour
             aiAnim.ResetTrigger("idle");
             aiAnim.SetTrigger("walk");
 
-            if (ai.remainingDistance <= ai.stoppingDistance)
+            if(ai.remainingDistance <= ai.stoppingDistance)
             {
-                aiAnim.ResetTrigger("sprint");
-                aiAnim.ResetTrigger("walk");
-                aiAnim.SetTrigger("idle");
                 randomNum2 = Random.Range (0,2);
                 if (randomNum2 == 0)
                 {
@@ -84,6 +91,10 @@ public class AiLocomotion : MonoBehaviour
                 }
                 if(randomNum2 == 1)
                 {
+                    aiAnim.ResetTrigger("sprint");
+                    aiAnim.ResetTrigger("walk");
+                    aiAnim.SetTrigger("idle");
+                    ai.speed = 0;
                     StopCoroutine("stayIdle");
                     StartCoroutine("stayIdle");
                     walking = false;
@@ -107,6 +118,8 @@ public class AiLocomotion : MonoBehaviour
         chasing = false;
         randomNum = Random.Range(0, destinationAmount);
         currentDest = destinations[randomNum];
+        aiAnim.ResetTrigger("sprint");
+        aiAnim.SetTrigger("walk");
     }
     IEnumerator deathRoutine()
     {
