@@ -17,17 +17,16 @@ public class AiLocomotion : MonoBehaviour
     Transform currentDest;
     Vector3 dest;
     int randomNum, randomNum2;
-    public int destinationAmount;
     public Vector3 rayCastOffset;
     public Vector3 rayCastTargetOffset;
     public string deathScene;
     public Ray ray;
-
+    float aiDistance;
 
     private void Start()
     {
         walking = true;
-        randomNum = Random.Range (0,destinationAmount);
+        randomNum = Random.Range (0,destinations.Count);
         currentDest = destinations[randomNum];
     }
     void Update()
@@ -35,8 +34,9 @@ public class AiLocomotion : MonoBehaviour
         Vector3 direction = ((playerTransform.position + rayCastTargetOffset) - transform.position).normalized;
        
         RaycastHit hit;
-        
-        
+
+        aiDistance = (Vector3.Distance(playerTransform.position, this.transform.position));
+
         if (Physics.Raycast(transform.position + rayCastOffset , direction * sightDistance, out hit))
         {
             Debug.DrawRay(transform.position + rayCastOffset, direction * sightDistance);
@@ -60,7 +60,7 @@ public class AiLocomotion : MonoBehaviour
             aiAnim.ResetTrigger("walk");
             aiAnim.ResetTrigger("idle");
             aiAnim.SetTrigger("sprint");
-            if (ai.remainingDistance <= catchDistance)
+            if (aiDistance <= catchDistance)
             {
                 playerTransform.gameObject.SetActive(false);
                 aiAnim.ResetTrigger("walk");
@@ -86,7 +86,7 @@ public class AiLocomotion : MonoBehaviour
                 randomNum2 = Random.Range (0,2);
                 if (randomNum2 == 0)
                 {
-                    randomNum = Random.Range(0, destinationAmount);
+                    randomNum = Random.Range(0, destinations.Count);
                     currentDest = destinations[randomNum];
                 }
                 if(randomNum2 == 1)
@@ -107,7 +107,7 @@ public class AiLocomotion : MonoBehaviour
         idleTime = Random.Range (minIdleTime, maxIdletime);
         yield return new WaitForSeconds (idleTime);
         walking = true;
-        randomNum = Random.Range(0, destinationAmount);
+        randomNum = Random.Range(0, destinations.Count);
         currentDest = destinations[randomNum];
     }
     IEnumerator chaseRoutine()
@@ -116,7 +116,7 @@ public class AiLocomotion : MonoBehaviour
         yield return new WaitForSeconds (chaseTime);
         walking = true;
         chasing = false;
-        randomNum = Random.Range(0, destinationAmount);
+        randomNum = Random.Range(0, destinations.Count);
         currentDest = destinations[randomNum];
         aiAnim.ResetTrigger("sprint");
         aiAnim.SetTrigger("walk");
