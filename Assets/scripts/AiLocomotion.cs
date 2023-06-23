@@ -29,6 +29,15 @@ public class AiLocomotion : MonoBehaviour
         randomNum = Random.Range (0,destinations.Count);
         currentDest = destinations[randomNum];
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("soundVolume")) 
+        {
+            chasing = true;
+        }
+    }
+
     void Update()
     {
         Vector3 direction = ((playerTransform.position + rayCastTargetOffset) - transform.position).normalized;

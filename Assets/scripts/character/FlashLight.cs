@@ -22,6 +22,7 @@ public class FlashLight : MonoBehaviour
     public GameObject soundVolume;
     public GameObject flashlight;
     public GameObject visionCube;
+    public GameObject Monster;
     RaycastHit hit;
 
     private Vector3 hitDirection;
@@ -109,5 +110,13 @@ public class FlashLight : MonoBehaviour
             visionCube.SetActive(false);
         }
 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("end"))
+        {
+            Monster.gameObject.SetActive(false);
+        }
     }
 }

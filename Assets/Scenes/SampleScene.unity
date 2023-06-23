@@ -32271,7 +32271,7 @@ Transform:
   m_GameObject: {fileID: 1797254473}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 20, y: 20, z: 20}
+  m_LocalScale: {x: 48.77836, y: 48.77836, z: 48.77836}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7147900398687477017}
@@ -39236,6 +39236,7 @@ MonoBehaviour:
   soundVolume: {fileID: 1797254473}
   flashlight: {fileID: 1773808178}
   visionCube: {fileID: 663149946545460252, guid: 53ccbafebefcf094e8055d22cc0b9773, type: 3}
+  Monster: {fileID: 0}
 --- !u!1 &7147900398959632618
 GameObject:
   m_ObjectHideFlags: 0
@@ -39362,7 +39363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b83b031d27d9c047a23a405c5b62827, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_sensitivity: 2000
+  m_sensitivity: 1500
   m_clampAngle: 90
   m_playerObject: {fileID: 7147900398687477017}
   m_camera: {fileID: 7147900398415782262}
