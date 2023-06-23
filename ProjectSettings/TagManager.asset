@@ -9,6 +9,7 @@ TagManager:
   - Reach
   - visionCube
   - soundVolume
+  - end
   layers:
   - Default
   - TransparentFX
