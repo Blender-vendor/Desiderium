@@ -9,7 +9,7 @@ public class PuzzleBehaviour : MonoBehaviour
 
     [SerializeField] private bool PuzzleSolved;
 
-    public List<Light> puzzlelights;
+    public List<Light> puzzleLights;
     public GameObject[] buttons;
 
     [SerializeField] private int NoOfLights;
@@ -23,7 +23,7 @@ public class PuzzleBehaviour : MonoBehaviour
     // Counts the lights when the game starts
     void Start()
     {
-        NoOfLights = puzzlelights.Count;
+        NoOfLights = puzzleLights.Count;
         CountLights();
     }
    // everytime a button is pressed it makes sure all the lights are on
@@ -33,7 +33,7 @@ public class PuzzleBehaviour : MonoBehaviour
         lightsOn = 0;
 
         //Counts each light to make sure it's on
-        foreach (Light light in puzzlelights)
+        foreach (Light light in puzzleLights)
         {
            if (light.gameObject.activeSelf)
             {
@@ -41,14 +41,14 @@ public class PuzzleBehaviour : MonoBehaviour
                 Debug.Log(lightsOn);
                 Debug.Log("on");
            }
-            else
+           else
            {
-               if (lightsOn > 0)
-               {
+              if (lightsOn > 0)
+              {
                    lightsOn--;
                    Debug.Log(lightsOn);
                    Debug.Log("off");
-               }
+              }
            }
 
 
@@ -67,7 +67,7 @@ public class PuzzleBehaviour : MonoBehaviour
         {
             lightsOn = 0;
         }
-        // It's redundant now but this makes sure the amount of lights on nevr goes over the current amount of lights
+        // It's redundant now but this makes sure the amount of lights on, never goes over the current amount of lights
         if (lightsOn > NoOfLights)
         {
             lightsOn = NoOfLights;

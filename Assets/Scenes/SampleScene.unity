@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.09463933, g: 0.090243995, b: 0.06699336, a: 1}
+  m_IndirectSpecularColor: {r: 0.0017438771, g: 0.0012200889, b: 0.00033967049, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6977,7 +6977,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PuzzleSolved: 0
-  puzzlelights:
+  puzzleLights:
   - {fileID: 1252891738}
   - {fileID: 2071915477}
   - {fileID: 462134420}
@@ -14579,14 +14579,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
-  m_LocalRotation: {x: -0.04061146, y: -0.015967412, z: 0.47549534, w: 0.8786353}
-  m_LocalPosition: {x: 0, y: 13.97, z: 0}
+  m_LocalRotation: {x: -0.15335672, y: 0.045362942, z: 0.4735963, w: 0.8661007}
+  m_LocalPosition: {x: 0, y: 31.72, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -3.221, y: -3.829, z: 56.95}
+  m_LocalEulerAnglesHint: {x: -17.976, y: -4.02, z: 57.977}
 --- !u!1 &715510461
 GameObject:
   m_ObjectHideFlags: 0
@@ -20047,7 +20047,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PuzzleSolved: 0
-  puzzlelights:
+  puzzleLights:
   - {fileID: 212824781}
   - {fileID: 1867939727}
   - {fileID: 699959412}
@@ -21159,7 +21159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PuzzleSolved: 0
-  puzzlelights:
+  puzzleLights:
   - {fileID: 1726476664}
   - {fileID: 1963589289}
   - {fileID: 1710439881}
@@ -26667,7 +26667,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PuzzleSolved: 0
-  puzzlelights:
+  puzzleLights:
   - {fileID: 179245192}
   - {fileID: 1337850615}
   - {fileID: 2070276466}
@@ -28156,7 +28156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PuzzleSolved: 0
-  puzzlelights:
+  puzzleLights:
   - {fileID: 617434372}
   - {fileID: 1485435006}
   - {fileID: 2017832884}
@@ -32333,7 +32333,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0b60991bad352e04280543a67d1ca48e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -32438,7 +32438,7 @@ MonoBehaviour:
   idleTime: 0
   catchDistance: 3
   chaseTime: 0
-  minChaseTime: 15
+  minChaseTime: 5
   maxChaseTime: 25
   jumpscareTime: 2
   sightDistance: 70
@@ -32446,7 +32446,6 @@ MonoBehaviour:
   chasing: 0
   aiAnim: {fileID: 1798067289}
   playerTransform: {fileID: 7147900398687477017}
-  destinationAmount: 37
   rayCastOffset: {x: 0, y: -0.5, z: 0}
   rayCastTargetOffset: {x: 0, y: 1, z: 0}
   deathScene: SampleScene
@@ -39225,12 +39224,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recharge: 32
-  lightOn: 0
+  lightOn: 1
   Battery: 100
   amount: 1
   cubeCreatorLayer:
     serializedVersion: 2
     m_Bits: 256
+  batteryDrain: 3
+  batteryRecharge: 10
   Light: {fileID: 454602516}
   soundVolume: {fileID: 1797254473}
   flashlight: {fileID: 1773808178}

@@ -8,6 +8,7 @@ TagManager:
   - floor
   - Reach
   - visionCube
+  - soundVolume
   layers:
   - Default
   - TransparentFX

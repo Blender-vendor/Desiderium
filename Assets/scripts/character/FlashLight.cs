@@ -15,7 +15,8 @@ public class FlashLight : MonoBehaviour
 
     public LayerMask cubeCreatorLayer;
 
-    
+    [SerializeField] private int batteryDrain = 3;
+    [SerializeField] private int batteryRecharge = 10;
 
     public GameObject Light;
     public GameObject soundVolume;
@@ -62,12 +63,12 @@ public class FlashLight : MonoBehaviour
         //drains battery
         if (lightOn == true)
         {
-            Battery -= 3 * Time.deltaTime;
+            Battery -= batteryDrain * Time.deltaTime;
         }
         //recharges battery and de/activates the sound detection volume
         if (Input.GetKey(recharge))
         {
-            Battery += 10 * Time.deltaTime;
+            Battery += batteryRecharge * Time.deltaTime;
             soundVolume.SetActive(true);
         }
         else
@@ -95,18 +96,12 @@ public class FlashLight : MonoBehaviour
                 Start = flashlight.transform.position;
                 end = hit.point;
                 visionCube.SetActive(true);
+
                 //finds where to place the objects along the line multiplying direction and distance then adding the origin. creates a cube every 1 metre along the raycast line
                 for (float d = 0; d < rayLength; d += 1.0f)
                 {
                     Instantiate(visionCube, Start + hitDirection * d, Quaternion.identity);
                 }
-
-               //if (visionCube == null)
-               // {
-                   // return;
-               // }
-
-
             }
         }
         else if (lightOn == false)
