@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.0622796, g: 0.05341798, b: 0.033061597, a: 1}
+  m_IndirectSpecularColor: {r: 0.0026417703, g: 0.0020848168, b: 0.0007690678, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2044,7 +2044,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInZone: 0
   lightOn: 0
-  Puzzle: {fileID: 0}
+  Puzzle: {fileID: 1358079155}
   Lights: []
 --- !u!65 &125801854
 BoxCollider:
@@ -3627,8 +3627,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 212824780}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.5699997, y: 3.3611922, z: 5.38}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 6.5699997, y: 3.3611922, z: 5.380001}
+  m_LocalScale: {x: 0.99999994, y: 1, z: 0.99999994}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1003162164}
@@ -14678,14 +14678,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
-  m_LocalRotation: {x: -0.060537748, y: -0.005174328, z: 0.4757359, w: 0.87748724}
+  m_LocalRotation: {x: -0.14345835, y: 0.03995274, z: 0.4740841, w: 0.86779475}
   m_LocalPosition: {x: 0, y: 31.72, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -5.815, y: -3.843, z: 57.125}
+  m_LocalEulerAnglesHint: {x: -16.67, y: -3.991, z: 57.881}
 --- !u!1 &715510461
 GameObject:
   m_ObjectHideFlags: 0
@@ -15346,8 +15346,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInZone: 0
   lightOn: 0
-  Puzzle: {fileID: 0}
-  Lights: []
+  Puzzle: {fileID: 1003162163}
+  Lights:
+  - {fileID: 1867939726}
+  - {fileID: 699959411}
+  - {fileID: 414017195}
 --- !u!65 &731681186
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16604,8 +16607,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInZone: 0
   lightOn: 0
-  Puzzle: {fileID: 0}
-  Lights: []
+  Puzzle: {fileID: 1057357308}
+  Lights:
+  - {fileID: 1726476663}
+  - {fileID: 1710439880}
+  - {fileID: 2015194114}
 --- !u!65 &801162525
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20564,8 +20570,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInZone: 0
   lightOn: 0
-  Puzzle: {fileID: 0}
-  Lights: []
+  Puzzle: {fileID: 408102668}
+  Lights:
+  - {fileID: 1252891737}
+  - {fileID: 2071915476}
+  - {fileID: 71375686}
 --- !u!65 &1018638154
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23787,8 +23796,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInZone: 0
   lightOn: 0
-  Puzzle: {fileID: 0}
-  Lights: []
+  Puzzle: {fileID: 1003162163}
+  Lights:
+  - {fileID: 212824780}
+  - {fileID: 699959411}
 --- !u!65 &1175085632
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27423,8 +27434,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInZone: 0
   lightOn: 0
-  Puzzle: {fileID: 0}
-  Lights: []
+  Puzzle: {fileID: 1057357308}
+  Lights:
+  - {fileID: 1963589288}
+  - {fileID: 110755575}
+  - {fileID: 2015194114}
 --- !u!65 &1394716762
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -34004,8 +34018,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInZone: 0
   lightOn: 0
-  Puzzle: {fileID: 0}
-  Lights: []
+  Puzzle: {fileID: 1003162163}
+  Lights:
+  - {fileID: 1867939726}
+  - {fileID: 924823066}
+  - {fileID: 1056611110}
 --- !u!65 &1842839352
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -36774,8 +36791,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInZone: 0
   lightOn: 0
-  Puzzle: {fileID: 0}
-  Lights: []
+  Puzzle: {fileID: 408102668}
+  Lights:
+  - {fileID: 2071915476}
+  - {fileID: 1068616296}
+  - {fileID: 980573925}
 --- !u!65 &1999845309
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -38222,8 +38242,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInZone: 0
   lightOn: 0
-  Puzzle: {fileID: 0}
-  Lights: []
+  Puzzle: {fileID: 408102668}
+  Lights:
+  - {fileID: 462134419}
+  - {fileID: 396111373}
+  - {fileID: 1054591431}
+  - {fileID: 71375686}
 --- !u!65 &2065646409
 BoxCollider:
   m_ObjectHideFlags: 0
