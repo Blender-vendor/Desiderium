@@ -1,17 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FlashLight : MonoBehaviour
 {
     public KeyCode recharge;
     public bool lightOn = false;
-
     public float Battery = 100f;
     static float rayLength;
     public float amount = 1;
+
+    public int displayBattery;
 
     public LayerMask cubeCreatorLayer;
 
@@ -24,6 +27,8 @@ public class FlashLight : MonoBehaviour
     public GameObject visionCube;
     public GameObject Monster;
     RaycastHit hit;
+
+    public Text batteryText;
 
     private Vector3 hitDirection;
     private Vector3 Start, end;
@@ -109,6 +114,8 @@ public class FlashLight : MonoBehaviour
         {
             visionCube.SetActive(false);
         }
+
+        batteryText.text = "Battery:" + Battery + "%";
 
     }
 
