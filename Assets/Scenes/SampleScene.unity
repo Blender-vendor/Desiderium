@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.0013283887, g: 0.0008574514, b: 0.00019621674, a: 1}
+  m_IndirectSpecularColor: {r: 0.18311355, g: 0.22878379, b: 0.3066228, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -14723,20 +14723,20 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 0.5
+  m_Color: {r: 0.20754719, g: 0.19506499, b: 0.15761839, a: 1}
+  m_Intensity: 0.2
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
-  m_CookieSize: 10
+  m_CookieSize: 1
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.625
     m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
+    m_NormalBias: 0.37
+    m_NearPlane: 0.25
     m_CullingMatrixOverride:
       e00: 1
       e01: 0
@@ -14766,7 +14766,7 @@ Light:
   m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 0.2
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
@@ -14781,14 +14781,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
-  m_LocalRotation: {x: -0.15912904, y: 0.04852005, z: 0.4732839, w: 0.8650585}
+  m_LocalRotation: {x: 0.20979406, y: -0.24258542, z: 0.68691254, w: 0.65214264}
   m_LocalPosition: {x: 0, y: 31.72, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -18.738, y: -4.038, z: 58.034}
+  m_LocalEulerAnglesHint: {x: 37.366, y: -2.032, z: 92.288}
 --- !u!1 &715510461
 GameObject:
   m_ObjectHideFlags: 0
@@ -33201,7 +33201,7 @@ MonoBehaviour:
   catchDistance: 3
   chaseTime: 0
   minChaseTime: 5
-  maxChaseTime: 25
+  maxChaseTime: 15
   jumpscareTime: 2
   sightDistance: 70
   walking: 0
