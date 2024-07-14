@@ -114,7 +114,6 @@ public class FlashLight : MonoBehaviour
         {
             visionCube.SetActive(false);
         }
-        //displays battery percent on screen
 
         batteryText.text = "Battery:" + Battery + "%";
 
